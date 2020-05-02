@@ -5,6 +5,14 @@ class TaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.lightBlueAccent,
+        child: Icon(
+          Icons.add_circle_outline,
+          color:Colors.white,
+          size: 58.0,
+        ),
+      ),
       body: Container(
         // padding: EdgeInsets.only(top:40.0,left:30.0,right:30.0,bottom:30.0),
               child: SafeArea(
@@ -18,7 +26,7 @@ class TaskScreen extends StatelessWidget {
                     ),
                     Positioned(
                       top: 10.0 ,
-                      left:0.0,
+                      left:10.0,
                             child: CircleAvatar(
                               child: Icon(
                                 Icons.list,
@@ -31,7 +39,7 @@ class TaskScreen extends StatelessWidget {
                     ),
                     Positioned(
                       top: 70.0 ,
-                      left:0.0,
+                      left:10.0,
                             child: Text(
                               'Todo Tasks',
                               style: TextStyle(
@@ -44,10 +52,11 @@ class TaskScreen extends StatelessWidget {
 
                   DraggableScrollableSheet(
                     initialChildSize: 0.25,
-                    minChildSize: 0.1,
+                    minChildSize: 0.2,
                     maxChildSize: 0.5,
                     builder: (BuildContext context , myscrollController){
                       return Container(
+                        padding: EdgeInsets.symmetric(horizontal:20.0),
                         decoration: BoxDecoration(
                           color:Colors.white,
                           borderRadius: BorderRadius.only(
@@ -55,14 +64,26 @@ class TaskScreen extends StatelessWidget {
                             topRight:Radius.circular(40),
                           ),
                         ),
-                        child: ListView.builder(
-                          controller: myscrollController,
+                        //when you want to make list and copy title to rest of list this is used
+                        // child: ListView.builder(
+                        //   controller: myscrollController,
                     
-                          itemBuilder: (context,index){
-                            return ListTile(
-                              title: Text('task 1'),
-                            );
-                          },
+                        //   itemBuilder: (context,index){
+                        //     return ListTile(
+                        //       title: Text('task 1'),
+                        //     );
+                        //   },
+                        // ),
+                        child: ListView(
+                          controller: myscrollController,
+                          children: <Widget>[
+                            ListTile(
+                              title: Text('Task 1'),
+                              trailing: Checkbox(
+                                value: false,
+                                ),
+                            ),
+                          ],
                         ),
                       );
                       
