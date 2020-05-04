@@ -19,17 +19,24 @@ class _TaskScreenState extends State<TaskScreen> {
   ];
 
   ListView taskslist(ScrollController myscrollController) {
-    return ListView(
-                controller: myscrollController,
-                children: <Widget>[
-                TaskTile(),
-                TaskTile(),
-                TaskTile(),
-                TaskTile(),
-                TaskTile(),
-                TaskTile(),
-              ],
-            );
+    
+    return ListView.builder(
+      controller: myscrollController,
+      itemBuilder: (context, index){
+    
+      return TaskTile(
+        taskTitle: tasks[index].name ,
+         isChecked: tasks[index].isDone, 
+         checkBoxCallback: (checkboxState) {
+                    setState(() {
+                      tasks[index].toggleDone();
+                    });
+            }
+         );
+    },
+    itemCount: tasks.length,
+    ); 
+                             
   }
 
   @override
