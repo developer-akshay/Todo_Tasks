@@ -1,7 +1,39 @@
 import 'package:flutter/material.dart';
+import 'task_tile.dart';
+import 'add_task_screen.dart';
+import 'package:today/modals/task.dart';
 
-class TaskScreen extends StatelessWidget {
+class TaskScreen extends StatefulWidget {
+
   @override
+  _TaskScreenState createState() => _TaskScreenState();
+}
+
+
+class _TaskScreenState extends State<TaskScreen> {
+
+  List<Task> tasks=[
+    Task(name:'buy milk'),
+    Task(name:'buy oats'),
+    Task(name:'buy food'),
+  ];
+
+  ListView taskslist(ScrollController myscrollController) {
+    return ListView(
+                controller: myscrollController,
+                children: <Widget>[
+                TaskTile(),
+                TaskTile(),
+                TaskTile(),
+                TaskTile(),
+                TaskTile(),
+                TaskTile(),
+              ],
+            );
+  }
+
+  @override
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
@@ -12,11 +44,19 @@ class TaskScreen extends StatelessWidget {
           color:Colors.white,
           size: 58.0,
         ),
+
+        onPressed: ()  {
+          //bottomsheet use karenge isme 
+          //yeh 3 tarika tha anonmous vala
+          // showModalBottomSheet(context: context, builder: (context) => Container());
+          showModalBottomSheet(context: context, builder: (context) => AddTaskScreen());
+          //this builder needs a builder to be passed on
+        },
       ),
       body: Container(
         // padding: EdgeInsets.only(top:40.0,left:30.0,right:30.0,bottom:30.0),
               child: SafeArea(
-                              child: Stack(
+                 child: Stack(
                   // crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
@@ -74,18 +114,7 @@ class TaskScreen extends StatelessWidget {
                         //     );
                         //   },
                         // ),
-                        child: ListView(
-                            // controller: myscrollController,
-                            controller: myscrollController,
-                            children: <Widget>[
-                              ListTile(
-                                title: Text('Task 2'),
-                                trailing: Checkbox(
-                                  value: false,
-                                  ),
-                              ),
-                            ],
-                          ),
+                        child: taskslist(myscrollController),
                       );
                       
                     },
@@ -97,4 +126,6 @@ class TaskScreen extends StatelessWidget {
     );
   }
 }
+
+
 
