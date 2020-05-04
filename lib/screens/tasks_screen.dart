@@ -54,7 +54,7 @@ class TaskScreen extends StatelessWidget {
                     initialChildSize: 0.25,
                     minChildSize: 0.2,
                     maxChildSize: 0.5,
-                    builder: (BuildContext context , myscrollController){
+                    builder: (BuildContext context ,myscrollController){
                       return Container(
                         padding: EdgeInsets.symmetric(horizontal:20.0),
                         decoration: BoxDecoration(
@@ -66,7 +66,7 @@ class TaskScreen extends StatelessWidget {
                         ),
                         //when you want to make list and copy title to rest of list this is used
                         // child: ListView.builder(
-                        //   controller: myscrollController,
+                          // controller: Controller,
                     
                         //   itemBuilder: (context,index){
                         //     return ListTile(
@@ -75,16 +75,17 @@ class TaskScreen extends StatelessWidget {
                         //   },
                         // ),
                         child: ListView(
-                          controller: myscrollController,
-                          children: <Widget>[
-                            ListTile(
-                              title: Text('Task 1'),
-                              trailing: Checkbox(
-                                value: false,
-                                ),
-                            ),
-                          ],
-                        ),
+                            // controller: myscrollController,
+                            controller: myscrollController,
+                            children: <Widget>[
+                              ListTile(
+                                title: Text('Task 2'),
+                                trailing: Checkbox(
+                                  value: false,
+                                  ),
+                              ),
+                            ],
+                          ),
                       );
                       
                     },
@@ -96,3 +97,4 @@ class TaskScreen extends StatelessWidget {
     );
   }
 }
+
