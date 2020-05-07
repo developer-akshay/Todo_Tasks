@@ -35,7 +35,12 @@ class _TaskScreenState extends State<TaskScreen> {
           //yeh 3 tarika tha anonmous vala
           // showModalBottomSheet(context: context, builder: (context) => Container());
           showModalBottomSheet(context: context, builder: (context) => 
-          AddTaskScreen(),
+          AddTaskScreen((newTaskTitle) {
+            setState(() {
+              tasks.add(Task(name: newTaskTitle));
+            });
+            Navigator.pop(context);
+          }),
           );
           //this builder needs a builder to be passed on
         },
