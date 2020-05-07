@@ -81,7 +81,18 @@ class _TaskScreenState extends State<TaskScreen> {
                               ),
                             ),
                     ),
-
+                    Positioned(
+                      top: 120.0 ,
+                      left:15.0,
+                            child: Text(
+                              '${tasks.length} tasks',
+                              style: TextStyle(
+                                color:Colors.white,
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                    ),
                   DraggableScrollableSheet(
                     // initialChildSize: 0.2,//0.25
                     // minChildSize: 0.2,
