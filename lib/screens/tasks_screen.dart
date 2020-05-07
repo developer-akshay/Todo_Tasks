@@ -83,19 +83,13 @@ class _TaskScreenState extends State<TaskScreen> {
                     ),
 
                   DraggableScrollableSheet(
-                    initialChildSize: 0.5,//0.25
+                    // initialChildSize: 0.2,//0.25
                     // minChildSize: 0.2,
                     // maxChildSize: 0.5,
+                    
                     builder: (BuildContext context ,myscrollController){
                       return Container(
-                        padding: EdgeInsets.symmetric(horizontal:20.0),
-                        decoration: BoxDecoration(
-                          color:Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft:Radius.circular(40),
-                            topRight:Radius.circular(40),
-                          ),
-                        ),
+                        
                         //when you want to make list and copy title to rest of list this is used
                         // child: ListView.builder(
                           // controller: Controller,

@@ -17,21 +17,39 @@ class _TasksListState extends State<TasksList> {
   
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-    // controller: myscrollController,
-    itemBuilder: (context, index){
-                      
-    return TaskTile(
-      taskTitle: widget.tasks[index].name ,
-      isChecked: widget.tasks[index].isDone, 
-      checkBoxCallback: (checkboxState) {
-                  setState(() {
-                    widget.tasks[index].toggleDone();
-                  });
-          }
-      );
-                      },
-                      itemCount: widget.tasks.length,
-                      );
+    return DraggableScrollableSheet(
+          initialChildSize: 0.25,//0.25
+          minChildSize: 0.2,
+          // maxChildSize: 0.5,
+          builder: (BuildContext context ,Controller){
+          return Container(
+            padding: EdgeInsets.symmetric(horizontal:20.0),
+                        decoration: BoxDecoration(
+                          color:Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft:Radius.circular(40),
+                            topRight:Radius.circular(40),
+                          ),
+                        ),
+            child: ListView.builder(
+                    controller: Controller,
+                    itemBuilder: (context, index){
+                          
+      return TaskTile(
+        
+        taskTitle: widget.tasks[index].name ,
+        isChecked: widget.tasks[index].isDone, 
+        checkBoxCallback: (checkboxState) {
+                      setState(() {
+                        widget.tasks[index].toggleDone();
+                      });
+              }
+        );
+                          },
+                          itemCount: widget.tasks.length,
+                          ),
+          );
+          },
+    );
   }
 }
