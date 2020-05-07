@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'task_tile.dart';
+import 'package:today/screens/tasks_list.dart';
 import 'add_task_screen.dart';
 import 'package:today/modals/task.dart';
 
 class TaskScreen extends StatefulWidget {
-
   @override
   _TaskScreenState createState() => _TaskScreenState();
 }
@@ -12,32 +11,11 @@ class TaskScreen extends StatefulWidget {
 
 class _TaskScreenState extends State<TaskScreen> {
 
-  List<Task> tasks=[
+ List<Task> tasks=[
     Task(name:'buy milk'),
     Task(name:'buy oats'),
     Task(name:'buy food'),
   ];
-
-  ListView taskslist(ScrollController myscrollController) {
-    
-    return ListView.builder(
-      controller: myscrollController,
-      itemBuilder: (context, index){
-    
-      return TaskTile(
-        taskTitle: tasks[index].name ,
-         isChecked: tasks[index].isDone, 
-         checkBoxCallback: (checkboxState) {
-                    setState(() {
-                      tasks[index].toggleDone();
-                    });
-            }
-         );
-    },
-    itemCount: tasks.length,
-    ); 
-                             
-  }
 
   @override
 
@@ -56,7 +34,9 @@ class _TaskScreenState extends State<TaskScreen> {
           //bottomsheet use karenge isme 
           //yeh 3 tarika tha anonmous vala
           // showModalBottomSheet(context: context, builder: (context) => Container());
-          showModalBottomSheet(context: context, builder: (context) => AddTaskScreen());
+          showModalBottomSheet(context: context, builder: (context) => 
+          AddTaskScreen(),
+          );
           //this builder needs a builder to be passed on
         },
       ),
@@ -98,9 +78,9 @@ class _TaskScreenState extends State<TaskScreen> {
                     ),
 
                   DraggableScrollableSheet(
-                    initialChildSize: 0.25,
-                    minChildSize: 0.2,
-                    maxChildSize: 0.5,
+                    initialChildSize: 0.5,//0.25
+                    // minChildSize: 0.2,
+                    // maxChildSize: 0.5,
                     builder: (BuildContext context ,myscrollController){
                       return Container(
                         padding: EdgeInsets.symmetric(horizontal:20.0),
@@ -121,7 +101,8 @@ class _TaskScreenState extends State<TaskScreen> {
                         //     );
                         //   },
                         // ),
-                        child: taskslist(myscrollController),
+                        //tasklist
+                        child: TasksList(tasks),
                       );
                       
                     },
@@ -133,6 +114,4 @@ class _TaskScreenState extends State<TaskScreen> {
     );
   }
 }
-
-
 

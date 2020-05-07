@@ -18,7 +18,7 @@ TaskTile({this.isChecked,this.taskTitle,this.checkBoxCallback});
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text('Task 2',
+      title: Text(taskTitle,
                 style: TextStyle(
                   decoration: isChecked ? TextDecoration.lineThrough : null
                 ),
