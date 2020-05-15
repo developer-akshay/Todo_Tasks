@@ -18,10 +18,10 @@ class _TasksListState extends State<TasksList> {
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
-          initialChildSize: 0.25,//0.25
-          minChildSize: 0.2,
+          initialChildSize: 0.35,//0.25
+          minChildSize: 0.25,
           // maxChildSize: 0.5,
-          builder: (BuildContext context ,Controller){
+          builder: (BuildContext context ,myController){
           return Container(
             padding: EdgeInsets.symmetric(horizontal:20.0),
                         decoration: BoxDecoration(
@@ -32,7 +32,7 @@ class _TasksListState extends State<TasksList> {
                           ),
                         ),
             child: ListView.builder(
-                    controller: Controller,
+                    controller: myController,
                     itemBuilder: (context, index){
                           
       return TaskTile(

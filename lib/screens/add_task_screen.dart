@@ -38,7 +38,7 @@ class AddTaskScreen extends StatelessWidget {
               autofocus: true,
               textAlign: TextAlign.center,
               onChanged: (newText){
-                newTaskTitle = newText;
+                newText = newTaskTitle;
               },
             ),
             SizedBox(
@@ -53,7 +53,7 @@ class AddTaskScreen extends StatelessWidget {
               ),
               color: Colors.lightBlueAccent,
               onPressed: () {
-                addTaskCallback(newTaskTitle);
+                addTaskCallback(newTaskTitle ?? "exception error");
               },
             ),
           ],
